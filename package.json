@@ -1,0 +1,25 @@
+{
+  "name": "express-api-rest-postgresql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ProviderServices/app.provider.service.js",
+    "dev": "cross-env NODE_ENV=dev node ProviderServices/app.provider.service.js",
+    "prod": "cross-env NODE_ENV=prod node ProviderServices/app.provider.service.js"
+  },
+  "author": "Grimario Andre",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "3.5.5",
+    "body-parser": "1.19.0",
+    "cross-env": "5.2.1",
+    "express": "4.17.1",
+    "express-prettify": "0.1.1",
+    "pg-promise": "9.1.2"
+  },
+  "engines": {
+    "node": ">= 10.13.0",
+    "npm": ">= 6.4.1"
+  }
+}

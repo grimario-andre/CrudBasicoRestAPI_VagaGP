@@ -5,21 +5,23 @@ var options = {
 };
 var pgp = require('pg-promise')(options);
 
-var connectionString = databaseconfig;
+var connectionString = "postgres://postgres:a1b2c3d4e5@3.137.5.253:5432/LserverReport";
 var db = pgp(connectionString);
 
 function getprodutos(req, res, next) {
-  db.any('select id,"I04xProd","I02cProd" from public.products')
-    .then(function (produtos) {
+  console.log('Disparando o Método getprodutos da tabela products')
+  db.any('SELECT * FROM public.products ')
+    .then(function (products) {
       res.status(200)
-        .json(produtos);
+        .json(products);
     })
     .catch(function (err) {
+      console.log(err)
       return next(err);
     });
 }
 
-function getproduto(req, res, next) {
+function getMovie(req, res, next) {
   var id = parseInt(req.params.id);
   db.one('SELECT * FROM movie WHERE id = $1', id)
     .then(function (data) {
@@ -34,7 +36,7 @@ function getproduto(req, res, next) {
     });
 }
 
-function deleteproduto(req, res, next) {
+function deleteMovie(req, res, next) {
   var id = parseInt(req.params.id);
   db.result('DELETE FROM movie WHERE id = $1', id)
     .then(function (result) {
@@ -49,7 +51,7 @@ function deleteproduto(req, res, next) {
     });
 }
 
-function updateproduto(req, res, next) {
+function updateMovie(req, res, next) {
   var id = req.body.id;
   var name = req.body.name;
   var sql = 'UPDATE movie SET name=$1 WHERE id=' + id + ' RETURNING id,name';
@@ -64,7 +66,7 @@ function updateproduto(req, res, next) {
     });
 }
 
-function createproduto(req, res, next) {
+function createMovie(req, res, next) {
   var name = req.body.name;
   var sql = 'INSERT INTO movie (name) VALUES($1) RETURNING id,name';
   db.one(sql, [name])
@@ -78,9 +80,9 @@ function createproduto(req, res, next) {
 }
 
 module.exports = {
-  getMovies: getprodutos(),
-  getMovie: getproduto(),
-  deleteMovie: deleteproduto(),
-  updateMovie: updateproduto(),
-  createMovie: createproduto(),
+  getProdutos: getprodutos,
+  getMovie: getMovie,
+  deleteMovie: deleteMovie,
+  updateMovie: updateMovie,
+  createMovie: createMovie,
 };

@@ -1,9 +1,9 @@
-var config = require('./config.json')[process.env.NODE_ENV || 'dev'];
+var config = require('../config.json')[process.env.NODE_ENV || 'dev'];
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var pretty = require('express-prettify');
-var queries = require('./queries');
+var queries = require('../queries');
 
 app.use(function (req, res, next) {
   res.header("Content-Type", "application/json");
@@ -20,7 +20,7 @@ var router = express.Router();
 
 app.use(router);
 
-router.get('/produtos', queries.getMovies);
+router.get('/produtos', queries.getProdutos);
 router.get('/produtos/:id', queries.getMovie);
 router.delete('/produtos/:id', queries.deleteMovie);
 router.put('/produtos/:id', queries.updateMovie);
@@ -31,5 +31,5 @@ app.get('*', function (req, res) {
 })
 
 app.listen(config.port, function () {
-  console.log('produtos.service app listening on port ' + config.port + '!');
+  console.log('movies.service app listening on port ' + config.port + '!');
 })

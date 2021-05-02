@@ -1,0 +1,14 @@
+{
+  "dev": {
+    "url": "http://localhost:4003/",
+    "hostname": "localhost",
+    "port": 4003,
+    "connectionString": "postgres://postgres:a1b2c3d4e5@3.137.5.253:5432/LserverReport"
+  },
+  "prod": {
+    "url": "http://www.mysiteweb.com:4003/",
+    "hostname": "localhost",
+    "port": 4003,
+    "connectionString": "postgres://postgres:a1b2c3d4e5@3.137.5.253:5432/LserverReport"
+  }
+}
