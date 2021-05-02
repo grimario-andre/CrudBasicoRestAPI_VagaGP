@@ -20,16 +20,16 @@ var router = express.Router();
 
 app.use(router);
 
-router.get('/movies', queries.getMovies);
-router.get('/movies/:id', queries.getMovie);
-router.delete('/movies/:id', queries.deleteMovie);
-router.put('/movies/:id', queries.updateMovie);
-router.post('/movies', queries.createMovie);
+router.get('/produtos', queries.getMovies);
+router.get('/produtos/:id', queries.getMovie);
+router.delete('/produtos/:id', queries.deleteMovie);
+router.put('/produtos/:id', queries.updateMovie);
+router.post('/produtos', queries.createMovie);
 
 app.get('*', function (req, res) {
   res.send('Express API Rest Postgresql');
 })
 
 app.listen(config.port, function () {
-  console.log('movies.service app listening on port ' + config.port + '!');
+  console.log('produtos.service app listening on port ' + config.port + '!');
 })

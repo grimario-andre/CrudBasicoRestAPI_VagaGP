@@ -1,7 +1,7 @@
 module.exports = {
   apps : [
     {
-      name      : 'movies',
+      name      : 'produtos',
       script    : 'produtos.providerservices.js',
       env: {
         COMMON_VARIABLE: 'true'
