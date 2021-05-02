@@ -5,14 +5,14 @@ var options = {
 };
 var pgp = require('pg-promise')(options);
 
-var connectionString = "postgres://postgres:Trustno1@localhost:5432/mock";
+var connectionString = databaseconfig;
 var db = pgp(connectionString);
 
 function getprodutos(req, res, next) {
-  db.any('SELECT * FROM movie ORDER BY name ASC')
-    .then(function (movies) {
+  db.any('select id,"I04xProd","I02cProd" from public.products')
+    .then(function (produtos) {
       res.status(200)
-        .json(movies);
+        .json(produtos);
     })
     .catch(function (err) {
       return next(err);
