@@ -8,9 +8,10 @@ var pgp = require('pg-promise')(options);
 var connectionString = "postgres://postgres:a1b2c3d4e5@3.137.5.253:5432/LserverReport";
 var db = pgp(connectionString);
 
+
 function getprodutos(req, res, next) {
   console.log('Disparando o Método getprodutos da tabela products')
-  db.any('SELECT * FROM public.products ')
+  db.any('SELECT * FROM products')
     .then(function (products) {
       res.status(200)
         .json(products);
